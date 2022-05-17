@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnMulti = findViewById(R.id.btn_multi);
         Button btnDivide = findViewById(R.id.btn_divide);
 
-        for(int i = 0; i<btnNum.length; i++ ){
+        for(int i = 0; i<btnNum.length; i++) {
             final int index = i;
             btnNum[i] = findViewById(btnNumId[i]);
             btnNum[index].setOnClickListener(new View.OnClickListener() {
@@ -47,5 +47,32 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+        btnPlus.setOnClickListener(btnListener);
+        btnMinus.setOnClickListener(btnListener);
+        btnMulti.setOnClickListener(btnListener);
+        btnDivide.setOnClickListener(btnListener);
     }
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int n1 = Integer.parseInt(edit1.getText().toString());
+            int n2 = Integer.parseInt(edit2.getText().toString());
+            int result = 0;
+            switch (view.getId()){
+                case R.id.btn_plus:
+                    result = n1 + n2;
+                    break;
+                case R.id.btn_minus:
+                    result = n1 - n2;
+                    break;
+                case R.id.btn_multi:
+                    result = n1 * n2;
+                    break;
+                case R.id.btn_divide:
+                    result = n1 / n2;
+                    break;
+            }
+            textResult.setText("결과 : " + result);
+        }
+    };
 }
